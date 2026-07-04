@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>KALLOW — Face Sunscreen SPF 50</title>
+<meta name="description" content="KALLOW Face Sunscreen SPF 50 — l'écran soin qui protège, hydrate et révèle l'éclat de votre peau.">
+<style>
+  :root{
+    --pink:#f9dce6;
+    --pink-deep:#f2b8ce;
+    --blue:#dcf0fb;
+    --blue-deep:#b7e3f6;
+    --off:#fffaf7;
+    --white:#ffffff;
+    --ink:#2e2a3d;
+    --ink-soft:#726b85;
+    --gold:#c9a876;
+    --line:rgba(46,42,61,0.08);
+    --shadow-soft: 0 20px 50px -20px rgba(46,42,61,0.22);
+    --shadow-card: 0 12px 30px -14px rgba(46,42,61,0.18);
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+    --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-ar: 'Segoe UI', Tahoma, Geneva, Arial, sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--off);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body[data-lang="ar"]{
+    font-family:var(--font-ar);
+  }
+  body[data-lang="ar"] .lang-fr{display:none !important;}
+  body:not([data-lang="ar"]) .lang-ar{display:none !important;}
+  body[data-lang="ar"]{direction:rtl;}
+  body[data-lang="ar"] .rtl-flip{transform:scaleX(-1);}
+
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer; border:none;}
+  ul{list-style:none;}
+  section{position:relative;}
+
+  .container{
+    width:100%;
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
+  /* ---------- TOP PROMO BAR ---------- */
+  .promo-bar{
+    background:linear-gradient(90deg, var(--pink-deep), var(--blue-deep));
+    color:var(--ink);
+    text-align:center;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.2px;
+    padding:9px 16px;
+    position:sticky;
+    top:0;
+    z-index:60;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;
+    top:33px;
+    z-index:59;
+    background:rgba(255,250,247,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1160px;
+    margin:0 auto;
+  }
+  .brand{
+    font-family:var(--font-display);
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:2px;
+    color:var(--ink);
+  }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    align-items:center;
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+  }
+  .nav-links a{transition:color .25s ease;}
+  .nav-links a:hover{color:var(--ink);}
+  .lang-switch{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    font-weight:700;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:100px;
+    padding:5px 6px;
+  }
+  .lang-switch button{
+    background:transparent;
+    padding:6px 12px;
+    border-radius:100px;
+    color:var(--ink-soft);
+    font-weight:700;
+    font-size:13px;
+    transition:all .25s ease;
+  }
+  .lang-switch button.active{
+    background:linear-gradient(90deg, var(--pink-deep), var(--blue-deep));
+    color:var(--ink);
+  }
+  .nav-right{display:flex; align-items:center; gap:18px;}
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:transparent;
+    padding:6px;
+  }
+  .burger span{width:24px; height:2px; background:var(--ink); border-radius:2px;}
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    gap:2px;
+    background:var(--white);
+    border-top:1px solid var(--line);
+    padding:10px 24px 18px;
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    padding:12px 4px;
+    font-size:15px;
+    font-weight:500;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:56px 0 40px;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(249,220,230,0.55), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(183,227,246,0.55), transparent 45%);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:50px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1.5px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .badge-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:12.5px;
+    font-weight:700;
+    padding:8px 14px;
+    border-radius:100px;
+    background:var(--white);
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+  .badge.glow{
+    background:linear-gradient(90deg, #fff0f5, #eef8ff);
+    border:1px solid var(--pink-deep);
+    animation:softGlow 2.4s ease-in-out infinite;
+  }
+  @keyframes softGlow{
+    0%,100%{ box-shadow:0 0 0 0 rgba(242,184,206,0.55);}
+    50%{ box-shadow:0 0 0 8px rgba(242,184,206,0);}
+  }
+  .badge.promo{
+    background:var(--ink);
+    color:var(--white);
+    border-color:var(--ink);
+  }
+
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:44px;
+    line-height:1.18;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:18px;
+    max-width:560px;
+  }
+  body[data-lang="ar"] .hero h1{font-family:var(--font-ar);}
+  .hero p.sub{
+    font-size:16.5px;
+    color:var(--ink-soft);
+    line-height:1.7;
+    max-width:480px;
+    margin-bottom:26px;
+  }
+
+  .price-block{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:8px;
+    flex-wrap:wrap;
+  }
+  .price-old{
+    font-size:18px;
+    color:var(--ink-soft);
+    text-decoration:line-through;
+    opacity:.7;
+  }
+  .price-new{
+    font-family:var(--font-display);
+    font-size:36px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .price-save{
+    font-size:12.5px;
+    font-weight:700;
+    color:#b0446b;
+    background:var(--pink);
+    padding:4px 10px;
+    border-radius:100px;
+  }
+  .urgency-line{
+    font-size:13.5px;
+    font-weight:600;
+    color:#b0446b;
+    margin-bottom:24px;
+  }
+
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:#25D366;
+    color:#fff;
+    font-weight:700;
+    font-size:15.5px;
+    padding:16px 30px;
+    border-radius:100px;
+    box-shadow:0 14px 30px -10px rgba(37,211,102,0.55);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .cta-btn:hover{transform:translateY(-2px); box-shadow:0 18px 36px -8px rgba(37,211,102,0.6);}
+  .cta-secondary{
+    display:inline-block;
+    margin-inline-start:18px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--ink-soft);
+    padding-bottom:2px;
+  }
+  .hero-ctas{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:30px;}
+
+  .mini-badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .mini-badge{
+    font-size:12px;
+    font-weight:600;
+    color:var(--ink-soft);
+    background:var(--white);
+    border:1px solid var(--line);
+    padding:7px 12px;
+    border-radius:100px;
+  }
+
+  .hero-visual{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:420px;
+  }
+  .hero-visual::before{
+    content:"";
+    position:absolute;
+    width:340px; height:340px;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--pink) 0%, var(--blue) 55%, transparent 75%);
+    filter:blur(10px);
+    z-index:0;
+  }
+  .hero-product-img{
+    position:relative;
+    z-index:1;
+    max-width:320px;
+    width:100%;
+    height:auto;
+    filter:drop-shadow(0 30px 40px rgba(46,42,61,0.25));
+    animation:floatY 5s ease-in-out infinite;
+  }
+  @keyframes floatY{
+    0%,100%{ transform:translateY(0);}
+    50%{ transform:translateY(-14px);}
+  }
+
+  /* ---------- COUNTDOWN ---------- */
+  .countdown-section{
+    padding:26px 0 10px;
+  }
+  .countdown-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-card);
+    padding:26px 24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    text-align:center;
+  }
+  .countdown-label{
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  .countdown-timer{
+    display:flex;
+    gap:14px;
+  }
+  .timer-box{
+    background:linear-gradient(180deg, var(--pink), var(--blue));
+    border-radius:var(--radius-sm);
+    min-width:70px;
+    padding:12px 10px;
+    text-align:center;
+  }
+  .timer-num{
+    font-family:var(--font-display);
+    font-size:26px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .timer-unit{
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .countdown-expired{
+    display:none;
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--ink-soft);
+    max-width:420px;
+  }
+
+  /* ---------- SECTION TITLES ---------- */
+  .section-pad{padding:80px 0;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 46px;
+  }
+  .section-title{
+    font-family:var(--font-display);
+    font-size:32px;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  body[data-lang="ar"] .section-title{font-family:var(--font-ar);}
+  .section-text{
+    font-size:15.5px;
+    line-height:1.75;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- BENEFITS ---------- */
+  .benefits-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+  }
+  .benefit-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:28px 22px;
+    box-shadow:var(--shadow-card);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .benefit-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-soft);
+  }
+  .benefit-icon{font-size:26px; margin-bottom:14px;}
+  .benefit-card h3{
+    font-size:15.5px;
+    font-weight:700;
+    margin-bottom:8px;
+    color:var(--ink);
+  }
+  .benefit-card p{
+    font-size:13.8px;
+    line-height:1.6;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- USERS / LIFESTYLE ---------- */
+  .users-section{
+    background:linear-gradient(180deg, var(--off), var(--pink) 200%);
+  }
+  .users-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  .user-card{
+    position:relative;
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    aspect-ratio:3/4;
+    box-shadow:var(--shadow-card);
+    background:linear-gradient(135deg, var(--pink), var(--blue));
+  }
+  .user-card img{
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .user-placeholder{
+    position:absolute; inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink-soft);
+    text-align:center;
+    padding:14px;
+  }
+
+  /* ---------- AUDIO TESTIMONIAL ---------- */
+  .audio-card{
+    max-width:640px;
+    margin:0 auto;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-card);
+    padding:36px 32px;
+    text-align:center;
+  }
+  .audio-quote{
+    font-family:var(--font-display);
+    font-size:19px;
+    line-height:1.6;
+    color:var(--ink);
+    margin:20px 0 22px;
+    font-style:italic;
+  }
+  body[data-lang="ar"] .audio-quote{font-family:var(--font-ar); font-style:normal;}
+  audio{width:100%; margin-top:10px;}
+  .audio-fallback{
+    background:linear-gradient(90deg, var(--pink), var(--blue));
+    border-radius:100px;
+    padding:14px 20px;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .audio-note{
+    margin-top:16px;
+    font-size:12px;
+    color:var(--ink-soft);
+    opacity:.8;
+  }
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  .review-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:24px 22px;
+    box-shadow:var(--shadow-card);
+  }
+  .stars{color:var(--gold); font-size:14px; margin-bottom:10px; letter-spacing:2px;}
+  .review-text{
+    font-size:14px;
+    line-height:1.7;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .review-name{
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- ORDER FORM ---------- */
+  .order-section{
+    background:linear-gradient(160deg, var(--pink), var(--blue));
+  }
+  .order-card{
+    max-width:640px;
+    margin:0 auto;
+    background:var(--white);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-soft);
+    padding:40px 34px;
+  }
+  .order-price{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    justify-content:center;
+    margin-bottom:6px;
+  }
+  .order-note{
+    text-align:center;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:28px;
+  }
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:7px;
+    color:var(--ink);
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    padding:13px 14px;
+    border-radius:var(--radius-sm);
+    border:1.5px solid var(--line);
+    font-size:14.5px;
+    font-family:inherit;
+    color:var(--ink);
+    background:var(--off);
+    transition:border-color .25s ease;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--pink-deep);
+  }
+  .field textarea{resize:vertical; min-height:70px;}
+  .order-submit{
+    width:100%;
+    margin-top:8px;
+  }
+  .trust-line{
+    text-align:center;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:18px;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
+  }
+  .faq-q{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    font-size:15.5px;
+    font-weight:600;
+    color:var(--ink);
+    background:transparent;
+    width:100%;
+    text-align:start;
+    padding:4px 0;
+  }
+  .faq-icon{
+    flex:none;
+    width:22px; height:22px;
+    border-radius:50%;
+    background:var(--pink);
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px;
+    font-weight:700;
+    color:var(--ink);
+    transition:transform .3s ease;
+  }
+  .faq-item.open .faq-icon{transform:rotate(45deg); background:var(--blue);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease, padding .35s ease;
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--ink-soft);
+  }
+  .faq-item.open .faq-a{max-height:200px; padding-top:12px;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:linear-gradient(135deg, var(--pink-deep), var(--blue-deep));
+    text-align:center;
+    padding:80px 24px;
+  }
+  .final-cta h2{
+    font-family:var(--font-display);
+    font-size:30px;
+    font-weight:700;
+    color:var(--ink);
+    max-width:600px;
+    margin:0 auto 14px;
+  }
+  body[data-lang="ar"] .final-cta h2{font-family:var(--font-ar);}
+  .final-cta p{
+    font-size:15px;
+    color:var(--ink);
+    opacity:.85;
+    max-width:520px;
+    margin:0 auto 28px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    padding:44px 24px 30px;
+  }
+  footer .brand{color:#fff; margin-bottom:12px;}
+  footer p{
+    font-size:13px;
+    color:rgba(255,255,255,0.65);
+    margin-bottom:6px;
+  }
+  .footer-links{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin:14px 0;
+    font-size:13px;
+  }
+  .footer-links a{color:rgba(255,255,255,0.8);}
+  .footer-copy{
+    margin-top:18px;
+    font-size:11.5px;
+    color:rgba(255,255,255,0.4);
+  }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed;
+    bottom:22px;
+    inset-inline-end:22px;
+    z-index:70;
+    width:58px; height:58px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 14px 30px -8px rgba(37,211,102,0.6);
+    animation:pulseWa 2.6s ease-in-out infinite;
+  }
+  @keyframes pulseWa{
+    0%,100%{ box-shadow:0 14px 30px -8px rgba(37,211,102,0.6);}
+    50%{ box-shadow:0 14px 30px -8px rgba(37,211,102,0.9);}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero-visual{order:-1; min-height:320px;}
+    .hero p.sub{margin-inline:auto;}
+    .price-block{justify-content:center;}
+    .hero-ctas{justify-content:center;}
+    .badge-row{justify-content:center;}
+    .mini-badges{justify-content:center;}
+    .benefits-grid{grid-template-columns:repeat(2, 1fr);}
+    .users-grid{grid-template-columns:repeat(2, 1fr);}
+    .reviews-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width: 560px){
+    .hero h1{font-size:32px;}
+    .price-new{font-size:30px;}
+    .section-title{font-size:26px;}
+    .timer-box{min-width:58px; padding:10px 8px;}
+    .timer-num{font-size:21px;}
+    .order-card{padding:30px 22px;}
+    .cta-secondary{display:block; margin-inline-start:0; margin-top:10px;}
+  }
+</style>
+</head>
+<body data-lang="fr">
+
+<!-- 1. TOP PROMO BAR -->
+<div class="promo-bar">
+  <span class="lang-fr">Livraison disponible partout au Maroc • Stock limité • Offre Summer 24h</span>
+  <span class="lang-ar">التوصيل متوفر في المغرب • الكمية محدودة • عرض الصيف 24 ساعة</span>
+</div>
+
+<!-- 2. HEADER -->
+<header>
+  <div class="nav-wrap">
+    <div class="brand">KALLOW</div>
+    <nav class="nav-links">
+      <a href="#produit"><span class="lang-fr">Produit</span><span class="lang-ar">المنتج</span></a>
+      <a href="#benefices"><span class="lang-fr">Bénéfices</span><span class="lang-ar">الفوائد</span></a>
+      <a href="#temoignage"><span class="lang-fr">Témoignage audio</span><span class="lang-ar">شهادة صوتية</span></a>
+      <a href="#avis"><span class="lang-fr">Avis</span><span class="lang-ar">الآراء</span></a>
+      <a href="#commander"><span class="lang-fr">Commander</span><span class="lang-ar">اطلبي</span></a>
+      <a href="#faq"><span class="lang-fr">FAQ</span><span class="lang-ar">الأسئلة</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+        <button type="button" class="lang-btn" data-lang="ar">العربية</button>
+      </div>
+      <button class="burger" id="burgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#produit"><span class="lang-fr">Produit</span><span class="lang-ar">المنتج</span></a>
+    <a href="#benefices"><span class="lang-fr">Bénéfices</span><span class="lang-ar">الفوائد</span></a>
+    <a href="#temoignage"><span class="lang-fr">Témoignage audio</span><span class="lang-ar">شهادة صوتية</span></a>
+    <a href="#avis"><span class="lang-fr">Avis</span><span class="lang-ar">الآراء</span></a>
+    <a href="#commander"><span class="lang-fr">Commander</span><span class="lang-ar">اطلبي</span></a>
+    <a href="#faq"><span class="lang-fr">FAQ</span><span class="lang-ar">الأسئلة</span></a>
+  </div>
+</header>
+
+<!-- 3. HERO -->
+<section class="hero" id="produit">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">KALLOW SKINCARE</div>
+      <div class="badge-row">
+        <span class="badge glow">
+          <span class="lang-fr">Quantité limitée arrivée au Maroc</span>
+          <span class="lang-ar">دفعة محدودة وصلت للمغرب</span>
+        </span>
+        <span class="badge promo">
+          <span class="lang-fr">Summer Promotion</span>
+          <span class="lang-ar">عرض الصيف</span>
+        </span>
+      </div>
+      <h1>
+        <span class="lang-fr">L'écran soin SPF 50 qui protège, hydrate et révèle l'éclat de votre peau</span>
+        <span class="lang-ar">واقي شمس بعناية SPF 50 يحمي، يرطب ويزيد إشراقة البشرة</span>
+      </h1>
+      <p class="sub">
+        <span class="lang-fr">Un geste skincare simple pour aider votre peau à rester protégée, douce, fraîche et lumineuse pendant la journée.</span>
+        <span class="lang-ar">خطوة بسيطة في روتين العناية تساعد بشرتك تبقى محمية، ناعمة، منتعشة ومشرقة خلال اليوم.</span>
+      </p>
+
+      <div class="price-block">
+        <span class="price-old">
+          <span class="lang-fr">450 DH</span>
+          <span class="lang-ar">450 درهم</span>
+        </span>
+        <span class="price-new">
+          <span class="lang-fr">350 DH</span>
+          <span class="lang-ar">350 درهم</span>
+        </span>
+        <span class="price-save">-22%</span>
+      </div>
+      <p class="urgency-line">
+        <span class="lang-fr">Offre valable 24h seulement — stock limité</span>
+        <span class="lang-ar">العرض صالح 24 ساعة فقط — الكمية محدودة</span>
+      </p>
+
+      <div class="hero-ctas">
+        <a class="cta-btn" href="https://wa.me/212784541564?text=Bonjour%2C%20je%20veux%20commander%20KALLOW%20Face%20Sunscreen%20SPF%2050." target="_blank" rel="noopener">
+          <span>💬</span>
+          <span class="lang-fr">Je commande maintenant sur WhatsApp</span>
+          <span class="lang-ar">نطلب دابا عبر واتساب</span>
+        </a>
+        <a class="cta-secondary" href="#benefices">
+          <span class="lang-fr">Voir les bénéfices</span>
+          <span class="lang-ar">نشوف الفوائد</span>
+        </a>
+      </div>
+
+      <div class="mini-badges">
+        <span class="mini-badge">SPF 50</span>
+        <span class="mini-badge">
+          <span class="lang-fr">Convient à tous les types de peau</span>
+          <span class="lang-ar">مناسب لجميع أنواع البشرة</span>
+        </span>
+        <span class="mini-badge">
+          <span class="lang-fr">Texture légère</span>
+          <span class="lang-ar">ملمس خفيف</span>
+        </span>
+        <span class="mini-badge">
+          <span class="lang-fr">Éclat frais</span>
+          <span class="lang-ar">إشراقة وانتعاش</span>
+        </span>
+        <span class="mini-badge">
+          <span class="lang-fr">Sensation hydratée</span>
+          <span class="lang-ar">إحساس مرطب</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <img src="images/hero-product.png" alt="KALLOW Face Sunscreen SPF 50" class="hero-product-img">
+    </div>
+  </div>
+</section>
+
+<!-- 4. COUNTDOWN -->
+<section class="countdown-section">
+  <div class="container">
+    <div class="countdown-card reveal">
+      <div class="countdown-label">
+        <span class="lang-fr">Offre Summer se termine dans</span>
+        <span class="lang-ar">عرض الصيف ينتهي في</span>
+      </div>
+      <div class="countdown-timer" id="countdownTimer">
+        <div class="timer-box"><div class="timer-num" id="tHours">24</div><div class="timer-unit"><span class="lang-fr">Heures</span><span class="lang-ar">ساعة</span></div></div>
+        <div class="timer-box"><div class="timer-num" id="tMinutes">00</div><div class="timer-unit"><span class="lang-fr">Minutes</span><span class="lang-ar">دقيقة</span></div></div>
+        <div class="timer-box"><div class="timer-num" id="tSeconds">00</div><div class="timer-unit"><span class="lang-fr">Secondes</span><span class="lang-ar">ثانية</span></div></div>
+      </div>
+      <div class="countdown-expired" id="countdownExpired">
+        <span class="lang-fr">L'offre est peut-être terminée. Contactez-nous sur WhatsApp pour vérifier la disponibilité.</span>
+        <span class="lang-ar">قد يكون العرض انتهى. تواصلي معنا عبر واتساب للتأكد من التوفر.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. BENEFITS -->
+<section class="section-pad" id="benefices">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">
+        <span class="lang-fr">Pourquoi vous allez aimer KALLOW Face Sunscreen SPF 50</span>
+        <span class="lang-ar">علاش غادي يعجبك KALLOW Face Sunscreen SPF 50؟</span>
+      </h2>
+      <p class="section-text">
+        <span class="lang-fr">KALLOW Face Sunscreen SPF 50 n'est pas seulement un écran solaire. C'est une étape soin quotidienne qui aide à protéger la peau des effets visibles du soleil, à garder une sensation d'hydratation, à réduire l'apparence du teint terne et à révéler un éclat plus frais. Sa texture légère s'intègre facilement dans votre routine et convient à tous les types de peau.</span>
+        <span class="lang-ar">KALLOW Face Sunscreen SPF 50 ماشي غير واقي شمس عادي. هو خطوة عناية يومية تساعد البشرة تبقى محمية من آثار الشمس الظاهرة، وتحافظ على إحساس الترطيب والراحة، وتبان أكثر نضارة وإشراقًا. ملمسه خفيف، سهل فالاستعمال، ومناسب لجميع أنواع البشرة.</span>
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">☀️</div>
+        <h3><span class="lang-fr">Protection SPF 50 au quotidien</span><span class="lang-ar">حماية يومية SPF 50</span></h3>
+        <p>
+          <span class="lang-fr">Aide à protéger la peau des agressions du soleil dans la routine de chaque jour.</span>
+          <span class="lang-ar">يساعد على حماية البشرة من تأثيرات الشمس ضمن الروتين اليومي.</span>
+        </p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">✨</div>
+        <h3><span class="lang-fr">Éclat plus frais</span><span class="lang-ar">إشراقة وانتعاش</span></h3>
+        <p>
+          <span class="lang-fr">Aide la peau à paraître plus lumineuse, plus nette et plus fraîche.</span>
+          <span class="lang-ar">يساعد البشرة تبان أكثر صفاءً، نضارة وإشراقًا.</span>
+        </p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">💧</div>
+        <h3><span class="lang-fr">Hydratation & confort</span><span class="lang-ar">ترطيب وراحة</span></h3>
+        <p>
+          <span class="lang-fr">Avec Sodium Hyaluronate et Glycerin pour une sensation douce et hydratée.</span>
+          <span class="lang-ar">بمكونات مثل Sodium Hyaluronate و Glycerin لإحساس ناعم ومرطب.</span>
+        </p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🌸</div>
+        <h3><span class="lang-fr">Convient à tous les types de peau</span><span class="lang-ar">مناسب لجميع أنواع البشرة</span></h3>
+        <p>
+          <span class="lang-fr">Texture légère, confortable et facile à intégrer dans la routine skincare.</span>
+          <span class="lang-ar">ملمس خفيف ومريح وسهل يدخل في روتين العناية.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. USERS / LIFESTYLE -->
+<section class="section-pad users-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">
+        <span class="lang-fr">Elles l'ont intégré dans leur routine</span>
+        <span class="lang-ar">دخلوه في روتينهم اليومي</span>
+      </h2>
+      <p class="section-text">
+        <span class="lang-fr">Un geste simple avant de sortir, pour une peau qui paraît plus fraîche et mieux protégée.</span>
+        <span class="lang-ar">خطوة بسيطة قبل الخروج لبشرة تبان أكثر انتعاشًا وحماية.</span>
+      </p>
+    </div>
+    <div class="users-grid">
+      <div class="user-card reveal">
+        <img src="images/user-01.jpg" alt="KALLOW routine" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="user-placeholder" style="display:none;"><span class="lang-fr">Photo à ajouter</span><span class="lang-ar">صورة قريبا</span></div>
+      </div>
+      <div class="user-card reveal">
+        <img src="images/user-02.jpg" alt="KALLOW routine" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="user-placeholder" style="display:none;"><span class="lang-fr">Photo à ajouter</span><span class="lang-ar">صورة قريبا</span></div>
+      </div>
+      <div class="user-card reveal">
+        <img src="images/user-03.jpg" alt="KALLOW routine" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="user-placeholder" style="display:none;"><span class="lang-fr">Photo à ajouter</span><span class="lang-ar">صورة قريبا</span></div>
+      </div>
+      <div class="user-card reveal">
+        <img src="images/user-04.jpg" alt="KALLOW routine" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="user-placeholder" style="display:none;"><span class="lang-fr">Photo à ajouter</span><span class="lang-ar">صورة قريبا</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. EXPERT AUDIO TESTIMONIAL -->
+<section class="section-pad" id="temoignage">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">
+        <span class="lang-fr">Témoignage d'une experte skincare</span>
+        <span class="lang-ar">شهادة خبيرة في العناية بالبشرة</span>
+      </h2>
+      <p class="section-text">
+        <span class="lang-fr">Écoutez pourquoi la protection solaire quotidienne est une étape essentielle dans une routine de soin.</span>
+        <span class="lang-ar">استمعي علاش الحماية من الشمس خطوة مهمة في روتين العناية اليومي.</span>
+      </p>
+    </div>
+    <div class="audio-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="audio-quote">
+        <span class="lang-fr">"Un SPF 50 avec une texture confortable peut aider à rendre la protection solaire plus facile à adopter chaque matin."</span>
+        <span class="lang-ar">"واقي شمس SPF 50 بملمس مريح كيساعد الإنسان يلتزم بالحماية كل صباح بسهولة."</span>
+      </p>
+      <audio controls id="audioPlayer" style="display:none;">
+        <source src="audio/expert-testimonial.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-fallback" id="audioFallback">
+        <span class="lang-fr">🎧 Audio témoignage à ajouter</span>
+        <span class="lang-ar">🎧 التسجيل الصوتي قريبا</span>
+      </div>
+      <p class="audio-note">
+        <span class="lang-fr">Témoignage informatif skincare, pas un avis médical.</span>
+        <span class="lang-ar">شهادة معلوماتية للعناية بالبشرة، ماشي رأي طبي.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. REVIEWS -->
+<section class="section-pad" id="avis" style="background:var(--white);">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">
+        <span class="lang-fr">Ce que nos clientes en pensent</span>
+        <span class="lang-ar">آراء بعض العميلات</span>
+      </h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">عجبني بزاف حيث خفيف على البشرة وما كيعطيش داك الإحساس الثقيل. وليت كنستعملو قبل ما نخرج، وكيخلي البشرة باينة منتعشة.</p>
+        <div class="review-name">Sara A.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">حسيتو مريح وساهل فالاستعمال، ودخلتو فالروتين ديالي بلا تعقيد. صراحة بشرتي ولات باينة مشرقة أكثر.</p>
+        <div class="review-name">Ilham R.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">J'aime beaucoup la texture. Elle est légère, agréable et facile à appliquer avant de sortir. Ma peau paraît plus fraîche dans la journée.</p>
+        <div class="review-name">Nadia T.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Très belle découverte. Le produit donne une sensation confortable et s'intègre facilement dans ma routine skincare.</p>
+        <div class="review-name">Yasmine B.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">I really like the lightweight feel. It sits comfortably on the skin and gives my face a fresh, healthy-looking glow.</p>
+        <div class="review-name">Emily S.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">A pleasant daily sunscreen. The texture feels smooth, simple, and comfortable on my face.</p>
+        <div class="review-name">Chloe M.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. ORDER SECTION -->
+<section class="section-pad order-section" id="commander">
+  <div class="container">
+    <div class="order-card reveal">
+      <div class="section-head" style="margin-bottom:26px;">
+        <h2 class="section-title" style="font-size:26px;">
+          <span class="lang-fr">Commandez votre KALLOW Face Sunscreen SPF 50</span>
+          <span class="lang-ar">اطلبي KALLOW Face Sunscreen SPF 50</span>
+        </h2>
+        <div class="order-price">
+          <span class="price-old"><span class="lang-fr">450 DH</span><span class="lang-ar">450 درهم</span></span>
+          <span class="price-new"><span class="lang-fr">350 DH</span><span class="lang-ar">350 درهم</span></span>
+        </div>
+        <p class="order-note">
+          <span class="lang-fr">Offre limitée pendant 24h — stock disponible en quantité limitée.</span>
+          <span class="lang-ar">العرض محدود 24 ساعة — الكمية المتوفرة محدودة.</span>
+        </p>
+      </div>
+
+      <form id="orderForm">
+        <div class="field">
+          <label><span class="lang-fr">Nom complet</span><span class="lang-ar">الاسم الكامل</span></label>
+          <input type="text" id="fName" required>
+        </div>
+        <div class="field">
+          <label><span class="lang-fr">Numéro de téléphone</span><span class="lang-ar">رقم الهاتف</span></label>
+          <input type="tel" id="fPhone" required>
+        </div>
+        <div class="field">
+          <label><span class="lang-fr">Ville</span><span class="lang-ar">المدينة</span></label>
+          <input type="text" id="fCity" required>
+        </div>
+        <div class="field">
+          <label><span class="lang-fr">Quantité</span><span class="lang-ar">الكمية</span></label>
+          <input type="number" id="fQty" min="1" value="1" required>
+        </div>
+        <div class="field">
+          <label><span class="lang-fr">Note optionnelle</span><span class="lang-ar">ملاحظة اختيارية</span></label>
+          <textarea id="fNote"></textarea>
+        </div>
+        <button type="submit" class="cta-btn order-submit">
+          <span>💬</span>
+          <span class="lang-fr">Valider ma commande sur WhatsApp</span>
+          <span class="lang-ar">تأكيد الطلب عبر واتساب</span>
+        </button>
+      </form>
+      <p class="trust-line">
+        <span class="lang-fr">Réponse rapide • Livraison disponible • Commande simple</span>
+        <span class="lang-ar">رد سريع • التوصيل متوفر • طلب بسيط</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FAQ -->
+<section class="section-pad" id="faq">
+  <div class="container" style="max-width:760px;">
+    <div class="section-head reveal">
+      <h2 class="section-title">
+        <span class="lang-fr">Questions fréquentes</span>
+        <span class="lang-ar">الأسئلة الشائعة</span>
+      </h2>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        <span><span class="lang-fr">Combien coûte le produit ?</span><span class="lang-ar">شحال ثمن المنتج؟</span></span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <span class="lang-fr">Le prix promotionnel est de 350 DH pendant l'offre Summer.</span>
+        <span class="lang-ar">ثمن العرض هو 350 درهم خلال عرض الصيف.</span>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        <span><span class="lang-fr">La quantité est-elle limitée ?</span><span class="lang-ar">واش الكمية محدودة؟</span></span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <span class="lang-fr">Oui, une petite quantité est disponible actuellement au Maroc.</span>
+        <span class="lang-ar">نعم، كاينة كمية محدودة متوفرة حاليًا في المغرب.</span>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        <span><span class="lang-fr">Comment commander ?</span><span class="lang-ar">كيفاش نطلب؟</span></span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <span class="lang-fr">Remplissez le formulaire puis validez votre commande sur WhatsApp.</span>
+        <span class="lang-ar">عمري الفورم وضغطي على زر واتساب باش ترسلي الطلب.</span>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        <span><span class="lang-fr">Est-il adapté à tous les types de peau ?</span><span class="lang-ar">واش مناسب لجميع أنواع البشرة؟</span></span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <span class="lang-fr">Il est conçu pour convenir à tous les types de peau avec une texture légère et confortable.</span>
+        <span class="lang-ar">مصمم باش يناسب جميع أنواع البشرة بملمس خفيف ومريح.</span>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        <span><span class="lang-fr">Comment l'utiliser ?</span><span class="lang-ar">كيفاش نستعملو؟</span></span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <span class="lang-fr">Appliquez-le sur une peau propre avant l'exposition au soleil, puis renouvelez selon les besoins.</span>
+        <span class="lang-ar">يوضع على بشرة نظيفة قبل التعرض للشمس، ويعاد استعماله حسب الحاجة.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. FINAL CTA -->
+<section class="final-cta reveal">
+  <h2>
+    <span class="lang-fr">Ne laissez pas passer l'offre Summer</span>
+    <span class="lang-ar">ما تخليش عرض الصيف يفوتك</span>
+  </h2>
+  <p>
+    <span class="lang-fr">KALLOW Face Sunscreen SPF 50 est disponible maintenant à 350 DH seulement pour une durée limitée.</span>
+    <span class="lang-ar">KALLOW Face Sunscreen SPF 50 متوفر الآن بثمن 350 درهم فقط لمدة محدودة.</span>
+  </p>
+  <a class="cta-btn" href="https://wa.me/212784541564?text=Bonjour%2C%20je%20veux%20commander%20KALLOW%20Face%20Sunscreen%20SPF%2050." target="_blank" rel="noopener">
+    <span>💬</span>
+    <span class="lang-fr">Commander maintenant sur WhatsApp</span>
+    <span class="lang-ar">اطلبي الآن عبر واتساب</span>
+  </a>
+</section>
+
+<!-- 12. FOOTER -->
+<footer>
+  <div class="brand">KALLOW</div>
+  <p>Face Sunscreen SPF 50</p>
+  <p>WhatsApp: 0784541564</p>
+  <div class="footer-links">
+    <a href="#" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 KALLOW. <span class="lang-fr">Tous droits réservés.</span><span class="lang-ar">جميع الحقوق محفوظة.</span></div>
+</footer>
+
+<!-- 13. FLOATING WHATSAPP -->
+<a class="float-wa" href="https://wa.me/212784541564?text=Bonjour%2C%20je%20veux%20commander%20KALLOW%20Face%20Sunscreen%20SPF%2050." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="white"><path d="M16.001 3C9.11 3 3.5 8.61 3.5 15.5c0 2.3.62 4.46 1.7 6.32L3 29l7.35-2.15a12.44 12.44 0 0 0 5.65 1.37h.01c6.89 0 12.5-5.61 12.5-12.5S22.89 3 16.001 3zm0 22.7h-.01a10.2 10.2 0 0 1-5.2-1.43l-.37-.22-3.86 1.13 1.16-3.76-.24-.39a10.18 10.18 0 0 1-1.57-5.53c0-5.64 4.59-10.23 10.24-10.23 2.73 0 5.3 1.07 7.23 3 1.93 1.93 3 4.5 3 7.23-.01 5.64-4.6 10.2-10.28 10.2zm5.6-7.65c-.31-.15-1.82-.9-2.1-1-.28-.1-.49-.15-.7.15-.2.3-.8 1-.98 1.2-.18.2-.36.23-.67.08-.31-.15-1.3-.48-2.48-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.47.13-.62.14-.14.31-.36.46-.54.15-.18.2-.3.31-.5.1-.2.05-.38-.02-.53-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.52-.7-.53h-.6c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.16 4.56.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.82-.74 2.08-1.46.26-.71.26-1.32.18-1.46-.08-.13-.28-.2-.59-.36z"/></svg>
+</a>
+
+<script>
+(function(){
+  // ---------- LANGUAGE SWITCH ----------
+  var body = document.body;
+  var langBtns = document.querySelectorAll('.lang-btn');
+  function setLang(lang){
+    if(lang === 'ar'){
+      body.setAttribute('data-lang','ar');
+      body.setAttribute('dir','rtl');
+      document.documentElement.setAttribute('lang','ar');
+    } else {
+      body.setAttribute('data-lang','fr');
+      body.setAttribute('dir','ltr');
+      document.documentElement.setAttribute('lang','fr');
+    }
+    langBtns.forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    try{ localStorage.setItem('kallow_lang', lang); }catch(e){}
+  }
+  langBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){ setLang(btn.getAttribute('data-lang')); });
+  });
+  try{
+    var saved = localStorage.getItem('kallow_lang');
+    if(saved){ setLang(saved); }
+  }catch(e){}
+
+  // ---------- MOBILE MENU ----------
+  var burger = document.getElementById('burgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function(){
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mobileMenu.classList.remove('open'); });
+  });
+
+  // ---------- COUNTDOWN ----------
+  var STORAGE_KEY = 'kallow_promo_end';
+  var endTime;
+  try{
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if(stored && !isNaN(parseInt(stored,10))){
+      endTime = parseInt(stored,10);
+    } else {
+      endTime = Date.now() + 24*60*60*1000;
+      localStorage.setItem(STORAGE_KEY, endTime);
+    }
+  }catch(e){
+    endTime = Date.now() + 24*60*60*1000;
+  }
+
+  var elH = document.getElementById('tHours');
+  var elM = document.getElementById('tMinutes');
+  var elS = document.getElementById('tSeconds');
+  var timerBox = document.getElementById('countdownTimer');
+  var expiredBox = document.getElementById('countdownExpired');
+
+  function pad(n){ return n < 10 ? '0'+n : ''+n; }
+
+  function tick(){
+    var diff = endTime - Date.now();
+    if(diff <= 0){
+      timerBox.style.display = 'none';
+      expiredBox.style.display = 'block';
+      clearInterval(intervalId);
+      return;
+    }
+    var h = Math.floor(diff / (1000*60*60));
+    var m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    var s = Math.floor((diff % (1000*60)) / 1000);
+    elH.textContent = pad(h);
+    elM.textContent = pad(m);
+    elS.textContent = pad(s);
+  }
+  tick();
+  var intervalId = setInterval(tick, 1000);
+
+  // ---------- FAQ ACCORDION ----------
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+      if(!isOpen){ item.classList.add('open'); }
+    });
+  });
+
+  // ---------- AUDIO FALLBACK ----------
+  var audioPlayer = document.getElementById('audioPlayer');
+  var audioFallback = document.getElementById('audioFallback');
+  var srcEl = audioPlayer.querySelector('source');
+  function showAudio(){
+    audioPlayer.style.display = 'block';
+    audioFallback.style.display = 'none';
+  }
+  function showFallback(){
+    audioPlayer.style.display = 'none';
+    audioFallback.style.display = 'inline-block';
+  }
+  audioPlayer.addEventListener('loadedmetadata', showAudio);
+  audioPlayer.addEventListener('error', showFallback);
+  srcEl.addEventListener('error', showFallback);
+  // trigger a load attempt
+  audioPlayer.load();
+  setTimeout(function(){
+    if(audioPlayer.readyState === 0){ showFallback(); }
+  }, 1200);
+
+  // ---------- ORDER FORM -> WHATSAPP ----------
+  var orderForm = document.getElementById('orderForm');
+  orderForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('fName').value.trim();
+    var phone = document.getElementById('fPhone').value.trim();
+    var city = document.getElementById('fCity').value.trim();
+    var qty = document.getElementById('fQty').value.trim();
+    var note = document.getElementById('fNote').value.trim();
+
+    var msg = "Bonjour, je veux commander KALLOW Face Sunscreen SPF 50.\n" +
+      "Prix promo: 350 DH\n" +
+      "Nom: " + name + "\n" +
+      "Téléphone: " + phone + "\n" +
+      "Ville: " + city + "\n" +
+      "Quantité: " + qty + "\n" +
+      "Note: " + (note || "-");
+
+    var url = "https://wa.me/212784541564?text=" + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  });
+
+  // ---------- SCROLL REVEAL ----------
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el){ obs.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+})();
+</script>
+
+</body>
+</html>
